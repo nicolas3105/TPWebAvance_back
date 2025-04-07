@@ -9,6 +9,5 @@ import lombok.*;
 @Data
 public class PieceDTO {
     private Long id;
-
     private String name;
 }

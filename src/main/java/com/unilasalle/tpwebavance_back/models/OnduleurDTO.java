@@ -11,7 +11,7 @@ import lombok.*;
 public class OnduleurDTO {
     private Long id;
     private String model;
-    private String status;
+    private Boolean status;
     private Double power;
     private Long pieceId;
 }

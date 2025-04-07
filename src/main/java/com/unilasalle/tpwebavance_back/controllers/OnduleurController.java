@@ -15,33 +15,34 @@ public class OnduleurController {
 
     private final OnduleurService onduleurService;
 
-    /*@GetMapping
-    public List<OnduleurDTO> getAllOnduleurs(){
-        return this.onduleurService.getOnduleurs();
-    }*/
-
     @GetMapping
-    public List<Onduleur> getAllOnduleurs() {
-        return onduleurService.getAllOnduleurs();
-    }
-
-    @GetMapping("/piece/{pieceId}")
-    public List<Onduleur> getByPiece(@PathVariable Long pieceId) {
-        return onduleurService.findByPieceId(pieceId);
-    }
-
-    @PostMapping
-    public Onduleur createOnduleur(@RequestBody Onduleur onduleur) {
-        return onduleurService.saveOnduleur(onduleur);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteOnduleur(@PathVariable Long id) {
-        onduleurService.deleteOnduleur(id);
+    public List<OnduleurDTO> getAll() {
+        return onduleurService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Onduleur getOnduleurById(@PathVariable Long id) {
-        return onduleurService.getOnduleurById(id);
+    public OnduleurDTO getById(@PathVariable Long id) {
+        return onduleurService.findById(id);
+    }
+
+    @PostMapping
+    public OnduleurDTO create(@RequestBody OnduleurDTO dto) {
+        return onduleurService.save(dto);
+    }
+
+    @PutMapping("/{id}")
+    public OnduleurDTO update(@PathVariable Long id, @RequestBody OnduleurDTO dto) {
+        dto.setId(id);
+        return onduleurService.save(dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        onduleurService.delete(id);
+    }
+
+    @GetMapping("/piece/{pieceId}")
+    public List<OnduleurDTO> getByPiece(@PathVariable Long pieceId) {
+        return onduleurService.findByPieceId(pieceId);
     }
 }

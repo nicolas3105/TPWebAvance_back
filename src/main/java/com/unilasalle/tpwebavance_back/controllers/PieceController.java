@@ -2,6 +2,7 @@ package com.unilasalle.tpwebavance_back.controllers;
 
 import com.unilasalle.tpwebavance_back.models.Onduleur;
 import com.unilasalle.tpwebavance_back.models.Piece;
+import com.unilasalle.tpwebavance_back.models.PieceDTO;
 import com.unilasalle.tpwebavance_back.services.PieceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,22 +17,22 @@ public class PieceController {
     private final PieceService pieceService;
 
     @GetMapping
-    public List<Piece> getAllPieces() {
-        return pieceService.getAllPieces();
-    }
-
-    @PostMapping
-    public Piece createPiece(@RequestBody Piece piece) {
-        return pieceService.savePiece(piece);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deletePiece(@PathVariable Long id) {
-        pieceService.deletePiece(id);
+    public List<PieceDTO> getAll() {
+        return pieceService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Piece getPieceById(@PathVariable Long id) {
-        return pieceService.getPieceById(id);
+    public PieceDTO getById(@PathVariable Long id) {
+        return pieceService.getById(id);
+    }
+
+    @PostMapping
+    public PieceDTO create(@RequestBody PieceDTO dto) {
+        return pieceService.create(dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        pieceService.delete(id);
     }
 }
