@@ -16,21 +16,14 @@ public class Onduleur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long id;
 
     private String model;
-    private String status;
+    private Boolean status;
     private Double power;
 
     @ManyToOne
     @JoinColumn(name = "piece_id", nullable = false)
-    private Piece piece; // Association à la pièce
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
+    private Piece piece;
 }
