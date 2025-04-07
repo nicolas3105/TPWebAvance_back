@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -21,6 +22,7 @@ public class OnduleurService {
 
     private final OnduleurRepository onduleurRepository;
     private final OnduleurMapper onduleurMapper;
+    private final PieceService pieceService;
 
     public List<OnduleurDTO> findAll() {
         return onduleurMapper.listToDTO(onduleurRepository.findAll());
