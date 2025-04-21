@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/ping")
 public class HealthCheckController {
-    @GetMapping
-    public String ping(){return "pong";}
+    @GetMapping("/public/ping")
+    public String pingPublic(){return "pong from public";}
+
+    @GetMapping("/private/ping")
+    public String pingPrivate(){return "pong from private";}
 }
