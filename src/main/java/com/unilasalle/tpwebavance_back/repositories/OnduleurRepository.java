@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface OnduleurRepository extends JpaRepository<Onduleur, Long> {
     List<Onduleur> findByPieceId(Long pieceId);
+
 }

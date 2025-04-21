@@ -1,6 +1,7 @@
 package com.unilasalle.tpwebavance_back.services;
 
 import com.unilasalle.tpwebavance_back.Mapper.OnduleurMapper;
+import com.unilasalle.tpwebavance_back.exceptions.NotFoundException;
 import com.unilasalle.tpwebavance_back.models.Onduleur;
 import com.unilasalle.tpwebavance_back.models.OnduleurDTO;
 import com.unilasalle.tpwebavance_back.repositories.OnduleurRepository;
@@ -38,8 +39,19 @@ public class OnduleurService {
         return onduleurMapper.toDTO(saved);
     }
 
-    public void delete(Long id) {
-        onduleurRepository.deleteById(id);
+    public void delete(OnduleurDTO onduleurDTO) throws NotFoundException {
+        if (onduleurDTO.getId() == null) {
+            log.error("Onduleur with id null not found");
+            throw new NotFoundException("Can't delete UPS", "Can't delete UPS with id null");
+        }
+
+        Onduleur entity = this.onduleurRepository.findById(onduleurDTO.getId())
+                .orElseThrow(() -> {
+                    log.error("UPS with id {} not found", onduleurDTO.getId());
+                    return new NotFoundException("Can't delete UPS", "Can't find UPS with id : " + onduleurDTO.getId());
+                });
+
+        this.onduleurRepository.delete(entity);
     }
 
     public List<OnduleurDTO> findByPieceId(Long pieceId) {
