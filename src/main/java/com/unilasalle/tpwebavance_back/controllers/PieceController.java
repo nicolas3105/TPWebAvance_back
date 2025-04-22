@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/piece")
+@RequestMapping("/private/piece")
 @RequiredArgsConstructor
 public class PieceController {
 

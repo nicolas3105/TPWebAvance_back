@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/onduleur")
+@RequestMapping("/private/onduleur")
 @RequiredArgsConstructor
 public class OnduleurController {
 
