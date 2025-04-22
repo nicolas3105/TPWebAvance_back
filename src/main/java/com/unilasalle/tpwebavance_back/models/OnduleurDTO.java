@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class OnduleurDTO {
+public class OnduleurDTO extends Onduleur {
     private Long id;
     private String model;
     private Boolean status;
